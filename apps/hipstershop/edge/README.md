@@ -85,6 +85,6 @@ http://172.18.3.1:80
 ## cleanup
 to remove hipstershop application
 ```
-kubectl delete -f 1-hipstershop-default.yaml
 kubectl delete -f 2-hipstershop-vs.yaml
+kubectl delete -f 1-hipstershop-default.yaml
 ```

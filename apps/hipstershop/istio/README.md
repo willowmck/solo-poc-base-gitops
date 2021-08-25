@@ -115,6 +115,6 @@ kubectl port-forward svc/grafana -n istio-system 3000:3000
 ## cleanup
 to remove hipstershop application
 ```
-kubectl delete -f 1-hipstershop-istio.yaml
 kubectl delete -f 2-hipstershop-vs.yaml
+kubectl delete -f 1-hipstershop-istio.yaml
 ```

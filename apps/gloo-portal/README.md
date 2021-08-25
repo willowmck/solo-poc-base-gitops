@@ -68,3 +68,10 @@ $(kubectl -n gloo-system get service gateway-proxy -o jsonpath='{.status.loadBal
 $(kubectl -n gloo-system get service gateway-proxy -o jsonpath='{.status.loadBalancer.ingress[0].ip}') api.mycompany.corp
 EOF
 ```
+
+## cleanup
+to remove petstore demo application
+```
+kubectl delete -f 2-petstore-apiproduct-1-0-2.yaml
+kubectl delete -f 1-gloo-portal-helm.yaml
+```
