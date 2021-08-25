@@ -21,4 +21,4 @@ export CONTEXT=<new_name>
 - [installing gloo-mesh-istio](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gm-istio)
   - [installing istio-addons](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gm-istio#install-istio-addons)
 - [installing gloo-portal](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gloo-portal)
-  - [deploying gloo-portal petstore demo](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gloo-portal)
+  - [deploying gloo-portal petstore demo](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gloo-portal#optional-deploy-petstore-gloo-portal-demo-app)
