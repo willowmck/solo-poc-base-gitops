@@ -9,6 +9,11 @@ kubectl config rename-contexts <current_name> <new_name>
 export CONTEXT=<new_name>
 ```
 
+## Navigate to the apps/gloo-edge directory
+```
+cd argocd
+```
+
 ## install argocd
 If you have done the above, just simply run the script to install argocd
 ```
