@@ -13,7 +13,7 @@ helm:
 
 Deploy the `gloo-mesh-ee-helm.yaml` app
 ```
-kubectl apply -f gloo-mesh-ee-helm.yaml
+kubectl apply -f 1-gloo-mesh-ee-helm.yaml
 ```
 
 You can run the `wait-for-rollout.sh` script to watch deployment progress

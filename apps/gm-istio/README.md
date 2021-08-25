@@ -6,7 +6,7 @@ cd apps/gm-istio
 
 Deploy the istio-operator app
 ```
-kubectl apply -f istio-operator-1-10-3.yaml
+kubectl apply -f 1-istio-operator-1-10-3.yaml
 ```
 
 You can run the `wait-for-rollout.sh` script to watch deployment progress
@@ -29,7 +29,7 @@ deployment "istio-operator" successfully rolled out
 
 Now deploy istio
 ```
-kubectl apply -f gloo-mesh-istio-1-10-3.yaml
+kubectl apply -f 2-gloo-mesh-istio-1-10-3.yaml
 ```
 
 You can run the `wait-for-rollout.sh` script to watch deployment progress of istiod
@@ -65,7 +65,7 @@ istio-addons provides observability tools (prometheus, grafana, jaeger, kiali) t
 
 Deploy the istio-addons app
 ```
-kubectl apply -f istio-addons.yaml
+kubectl apply -f 3-istio-addons.yaml
 ```
 
 check to see if istio-addons are deployed
