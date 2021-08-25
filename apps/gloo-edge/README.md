@@ -4,7 +4,7 @@ Navigate to the `apps/gloo-edge` directory
 cd apps/gloo-edge
 ```
 
-Using your favorite text editor, replace the helm value `license_key: <INSERT_LICENSE_KEY_HERE>` in the `gloo-edge-ee-helm.yaml` manifest
+Using your favorite text editor, replace the helm value `license_key: <INSERT_LICENSE_KEY_HERE>` in the `1-gloo-edge-ee-helm.yaml` manifest
 ```
 helm:
       values: |
@@ -77,3 +77,6 @@ glooctl cluster register --cluster-name ${REMOTE_CONTEXT} --remote-context ${REM
 ```
 kubectl port-forward svc/gloo-fed-console -n gloo-system 8090:8090
 ```
+
+## Next Steps - Deploy hipstershop application and expose through gloo-edge
+[Follow this Tutorial Here](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/hipstershop/edge)

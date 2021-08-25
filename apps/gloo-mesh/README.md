@@ -4,7 +4,7 @@ Navigate to the `apps/gloo-mesh` directory
 cd apps/gloo-mesh
 ```
 
-Using your favorite text editor, replace the helm value `license_key: <INSERT_LICENSE_KEY_HERE>` in the `gloo-mesh-ee-helm.yaml` manifest
+Using your favorite text editor, replace the helm value `license_key: <INSERT_LICENSE_KEY_HERE>` in the `1-gloo-mesh-ee-helm.yaml` manifest
 ```
 helm:
       values: |
@@ -69,3 +69,6 @@ access gloo mesh dashboard at `http://localhost:8090`:
 ```
 kubectl port-forward -n gloo-mesh svc/dashboard 8090
 ```
+
+## Next Steps - Deploy gloo-mesh istio
+[Follow this Tutorial Here](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gm-istio)

@@ -10,7 +10,7 @@ Navigate to the `apps/gloo-portal` directory
 cd apps/gloo-portal
 ```
 
-Using your favorite text editor, replace the helm value `license_key: <INSERT_LICENSE_KEY_HERE>` in the `gloo-portal-helm.yaml` manifest
+Using your favorite text editor, replace the helm value `license_key: <INSERT_LICENSE_KEY_HERE>` in the `1-gloo-portal-helm.yaml` manifest
 ```
 helm:
       values: |

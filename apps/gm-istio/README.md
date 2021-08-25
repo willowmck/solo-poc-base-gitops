@@ -105,3 +105,6 @@ access prometheus dashboard at `http://localhost:9090`
 ```
 kubectl port-forward svc/prometheus -n istio-system 9090:9090
 ```
+
+## Next Steps - Deploy hipstershop application and expose through istio
+[Follow this Tutorial Here](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/hipstershop/istio)
