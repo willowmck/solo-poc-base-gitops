@@ -43,9 +43,11 @@ Output should look similar to below:
 ```
 $ ../../wait-for-rollout.sh deployment gateway gloo-system 10
 Waiting 10 seconds for deployment gateway to come up.
+Error from server (NotFound): deployments.apps "gateway" not found
 Waiting 20 seconds for deployment gateway to come up.
+Waiting for deployment "gateway" rollout to finish: 0 of 1 updated replicas are available...
+deployment "gateway" successfully rolled out
 Waiting 30 seconds for deployment gateway to come up.
-<...>
 deployment "gateway" successfully rolled out
 ```
 
