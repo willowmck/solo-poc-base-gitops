@@ -32,6 +32,7 @@ deployment "enterprise-networking" successfully rolled out
 
 ### install meshctl
 ```
+export GLOO_MESH_VERSION=v1.1.0
 curl -sL https://run.solo.io/meshctl/install | sh -
 export PATH=$HOME/.gloo-mesh/bin:$PATH
 ```
