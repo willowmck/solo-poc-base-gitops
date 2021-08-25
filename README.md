@@ -16,8 +16,8 @@ export CONTEXT=<new_name>
 ## Table of Contents
 - [installing argocd](https://github.com/ably77/solo-poc-base-gitops/tree/main/argocd)
 - [installing gloo-edge](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gloo-edge)
-- [configuring gloo-fed](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gloo-edge#configuring-gloo-fed)
+  - [configuring gloo-fed](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gloo-edge#configuring-gloo-fed)
 - [installing gloo-mesh](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gloo-mesh)
 - [installing gloo-mesh-istio](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gm-istio)
-- [installing istio-addons](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gm-istio#install-istio-addons)
+  - [installing istio-addons](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gm-istio#install-istio-addons)
 - [installing gloo-portal](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gloo-portal)
