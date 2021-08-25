@@ -73,7 +73,7 @@ To register your cluster to `gloo-fed`
 glooctl cluster register --cluster-name ${CONTEXT} --remote-context ${CONTEXT} --remote-namespace gloo-system
 ```
 
-### register a second cluster to gloo-fed
+### (optional) register a second cluster to gloo-fed
 If you have a second cluster you would like to register to the gloo-fed console, follow the steps below
 
 #### IMPORTANT: set correct variables for contexts
@@ -123,9 +123,8 @@ Output should look similar to below:
 ```
 $ ../../wait-for-rollout.sh deployment enterprise-networking gloo-mesh 10
 Waiting 10 seconds for deployment enterprise-networking to come up.
+deployment "enterprise-networking" successfully rolled out
 Waiting 20 seconds for deployment enterprise-networking to come up.
-Waiting 30 seconds for deployment enterprise-networking to come up.
-<...>
 deployment "enterprise-networking" successfully rolled out
 ```
 
@@ -139,7 +138,7 @@ export PATH=$HOME/.gloo-mesh/bin:$PATH
 To register your cluster to gloo-mesh
 ```
 SVC=$(kubectl --context ${CONTEXT} -n gloo-mesh get svc enterprise-networking -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-meshctl cluster register --mgmt-context=${CONTEXT} --remote-context=${CONTEXT} --relay-server-address=$SVC:9900 enterprise cluster1 --cluster-domain cluster.local
+meshctl cluster register --mgmt-context=${CONTEXT} --remote-context=${CONTEXT} --relay-server-address=$SVC:9900 enterprise ${CONTEXT}--cluster-domain cluster.local
 ```
 
 ### (optional) register a second cluster and istio deployment with gloo mesh using meshctl
@@ -189,8 +188,12 @@ Output should look similar to below:
 ```
 $ ../../wait-for-rollout.sh deployment istio-operator istio-operator 10
 Waiting 10 seconds for deployment istio-operator to come up.
+Error from server (NotFound): namespaces "istio-operator" not found
 Waiting 20 seconds for deployment istio-operator to come up.
+Error from server (NotFound): namespaces "istio-operator" not found
+Waiting 30 seconds for deployment istio-operator to come up.
 <...>
+Waiting for deployment "istio-operator" rollout to finish: 0 of 1 updated replicas are available...
 deployment "istio-operator" successfully rolled out
 ```
 
@@ -208,8 +211,9 @@ Output should look similar to below
 ```
 $ ../../wait-for-rollout.sh deployment istiod istio-system 10
 Waiting 10 seconds for deployment istiod to come up.
+Waiting for deployment "istiod" rollout to finish: 0 of 1 updated replicas are available...
+deployment "istiod" successfully rolled out
 Waiting 20 seconds for deployment istiod to come up.
-<...>
 deployment "istiod" successfully rolled out
 ```
 
@@ -222,8 +226,8 @@ Output should look similar to below
 ```
 $ kubectl get pods -n istio-system
 NAME                                    READY   STATUS    RESTARTS   AGE
-istio-ingressgateway-6486dd4ffc-h2nxv   1/1     Running   0          46m
-istiod-7f5668c8f7-zdm2d                 1/1     Running   0          46m
+istio-ingressgateway-6486dd4ffc-2fjzg   1/1     Running   0          19s
+istiod-7f5668c8f7-dm9j6                 1/1     Running   0          30s
 ```
 
 ### install istio-addons
@@ -251,13 +255,34 @@ kiali-6457c5bbdc-vpjsh                  1/1     Running   0          38m
 prometheus-84446c5697-5h2w2             2/2     Running   0          38m
 ```
 
+## port-forward commands
+access grafana dashboard at `http://localhost:3000`
+```
+kubectl port-forward svc/grafana -n istio-system 3000:3000
+```
+
+access kiali dashboard at `http://localhost:20001`
+```
+kubectl port-forward deployment/kiali -n istio-system 20001:20001
+```
+
+access jaeger dashboard at `http://localhost:16686`
+```
+kubectl port-forward svc/tracing -n istio-system 16686:80
+```
+
+access prometheus dashboard at `http://localhost:9090`
+```
+kubectl port-forward svc/prometheus -n istio-system 9090:9090
+```
+
 ## installing gloo portal
 Navigate to the `apps/gloo-portal` directory
 ```
 cd apps/gloo-portal
 ```
 
-Using your favorite text editor, replace the helm value `license_key: <INSERT_LICENSE_KEY_HERE>` in the `gloo-mesh-ee-helm.yaml` manifest
+Using your favorite text editor, replace the helm value `license_key: <INSERT_LICENSE_KEY_HERE>` in the `gloo-portal-helm.yaml` manifest
 ```
 helm:
       values: |
@@ -285,13 +310,14 @@ Output should look similar to below:
 ```
 $ ../../wait-for-rollout.sh deployment gloo-portal-admin-server gloo-portal 10
 Waiting 10 seconds for deployment gloo-portal-admin-server to come up.
+Waiting for deployment "gloo-portal-admin-server" rollout to finish: 0 of 1 updated replicas are available...
+deployment "gloo-portal-admin-server" successfully rolled out
 Waiting 20 seconds for deployment gloo-portal-admin-server to come up.
-Waiting 30 seconds for deployment gloo-portal-admin-server to come up.
-<...>
 deployment "gloo-portal-admin-server" successfully rolled out
 ```
 
 ### access admin UI of Gloo Portal with port-forwarding
+access gloo-portal dashboard at `http://localhost:8000`
 ```
 kubectl port-forward -n gloo-portal svc/gloo-portal-admin-server 8000:8080
 ```
