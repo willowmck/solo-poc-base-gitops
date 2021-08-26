@@ -1,3 +1,17 @@
+# gloo-mesh
+
+## Prerequisites
+- Kubernetes clusters up and authenticated to kubectl
+- argocd
+
+## kubectl contexts
+Since we will potentially be using multiple clusters/contexts, it is useful to rename your contexts for a better experience
+```
+kubectl config get-contexts
+kubectl config rename-contexts <current_name> <new_name>
+export CONTEXT=<new_name>
+```
+
 ## installing gloo mesh
 Navigate to the `apps/gloo-mesh` directory
 ```

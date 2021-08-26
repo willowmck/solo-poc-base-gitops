@@ -1,10 +1,11 @@
-# installing gloo portal
+# gloo-portal
 
-# Prerequisites
+## Prerequisites
 - Kubernetes clusters up and authenticated to kubectl
 - argocd
 - gloo-edge deployed in cluster [follow this guide](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gloo-edge)
 
+## installing gloo portal
 Navigate to the `apps/gloo-portal` directory
 ```
 cd apps/gloo-portal

@@ -1,3 +1,17 @@
+# gloo-edge
+
+## Prerequisites
+- Kubernetes clusters up and authenticated to kubectl
+- argocd
+
+## kubectl contexts
+Since we will potentially be using multiple clusters/contexts, it is useful to rename your contexts for a better experience
+```
+kubectl config get-contexts
+kubectl config rename-contexts <current_name> <new_name>
+export CONTEXT=<new_name>
+```
+
 ## installing gloo-edge
 Navigate to the `apps/gloo-edge` directory
 ```
@@ -76,6 +90,25 @@ glooctl cluster register --cluster-name ${REMOTE_CONTEXT} --remote-context ${REM
 ### port-forward for gloo-fed console
 ```
 kubectl port-forward svc/gloo-fed-console -n gloo-system 8090:8090
+```
+
+## installing keycloak
+If you plan to follow along with the guides, it is recommended to install the keycloak argo application as well
+
+Deploy the `2-keycloak-12-0-4.yaml` app
+```
+kubectl apply -f 2-keycloak-12-0-4.yaml
+```
+
+You can run the `wait-for-rollout.sh` script to watch deployment progress
+```
+../../wait-for-rollout.sh deployment keycloak default 10
+```
+
+## setting up keycloak
+Run the script below to set up keycloak with two users `user1/password` and `user2/password`
+```
+./3-keycloak-setup.sh
 ```
 
 ## Next Steps - Deploy hipstershop application and expose through gloo-edge

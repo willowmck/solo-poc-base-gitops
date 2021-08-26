@@ -1,3 +1,9 @@
+# gloo mesh istio builds
+
+## Prerequisites
+- Kubernetes clusters up and authenticated to kubectl
+- argocd
+
 ## installing gloo mesh istio
 Navigate to the `apps/gm-istio` directory
 ```
