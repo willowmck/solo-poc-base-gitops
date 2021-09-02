@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bookinfo-virtualservice
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/ably77/solo-testbed-apps
+    targetRevision: HEAD
+    path: kustomize/environments/overlays/gloo-edge/virtualservice/bookinfo/single/
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: gloo-system
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
