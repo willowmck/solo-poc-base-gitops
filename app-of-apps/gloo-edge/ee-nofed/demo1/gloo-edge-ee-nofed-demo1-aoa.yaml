@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: gloo-edge-nofed-demo2-aoa
+  name: gloo-edge-ee-nofed-demo1-aoa
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/ably77/solo-poc-base-gitops
     targetRevision: HEAD
-    path: app-of-apps/gloo-edge/ee/nofed/demo2/active/
+    path: app-of-apps/gloo-edge/ee-nofed/demo1/active/
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
