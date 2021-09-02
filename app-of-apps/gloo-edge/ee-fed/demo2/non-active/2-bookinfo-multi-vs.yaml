@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bookinfo-virtualservice-multi
+  name: bookinfo-virtualservice
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
