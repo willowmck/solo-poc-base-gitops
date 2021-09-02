@@ -2,17 +2,19 @@
 
 CONTEXT=$1
 
-### check to make sure that arguments were set before taking off
+### If the CONTEXT is not specified, simply use the default context.
 if [[ ${CONTEXT} == "" ]]
 then
-  echo "Missing arguments. Proper usage is ./install-script.sh <context>"
-  echo "example:"
-  echo "./install-argocd.sh mgmt"
-  echo "would install argocd on the mgmt context"
-  exit 1
-else
-  echo "Beginning install on context ${CONTEXT}...."
+  CONTEXT=`kubectl config current-context`
+  if [[ ${CONTEXT} == "" ]]
+  then
+    echo "You do not have a curent kubernetes cluster.  Please create one."
+    exit 1
+  fi
+  echo "No context specified. Using default context of ${CONTEXT}"
 fi
+  
+echo "Beginning install on context ${CONTEXT}...."
 
 # use context
 kubectl config use-context ${CONTEXT}
