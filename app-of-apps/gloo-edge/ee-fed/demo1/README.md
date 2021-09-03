@@ -1,5 +1,36 @@
 # ee-fed demo1 environment details
 
+## Gloo Edge Enterprise License
+Before starting this demo, make sure that you have created a secret containing your Gloo Edge Enterprise license key. Gloo Edge expects a license to be created with a secret that is base64 encoded so let's do that.
+
+First export your Gloo Enterprise license key as a variable
+```
+export GLOO_LICENSE_KEY=
+```
+
+Now run the following to create the kubernetes secret
+```
+kubectl create namespace gloo-system
+
+BASE64_GLOO_LICENSE_KEY=$(echo -n $GLOO_LICENSE_KEY | base64 -w 0)
+
+cat <<EOF | kubectl -n gloo-system create -f -
+apiVersion: v1
+data:
+  license-key: "$BASE64_GLOO_LICENSE_KEY"
+kind: Secret
+metadata:
+  labels:
+    app: gloo
+    app.kubernetes.io/instance: gloo-edge-ee-helm-customvalues
+    gloo: license
+  name: license
+  namespace: gloo-system
+type: Opaque
+EOF
+```
+
+## Deploying demo1 app-of-app environment
 To deploy this app-of-app environment, from the root folder just run the command below:
 ```
 kubectl create -f app-of-apps/gloo-edge/ee-fed/demo1/gloo-edge-ee-fed-demo1-aoa.yaml
