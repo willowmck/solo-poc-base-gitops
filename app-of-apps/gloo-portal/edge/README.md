@@ -49,12 +49,6 @@ kubectl port-forward -n gloo-portal svc/gloo-portal-admin-server 8000:8080
 
 Open (localhost:8000) in browser
 
-# login to petstore portal htpasswd auth user
-```
-username: developer1
-password: gloo-portal1
-```
-
 # for kind deployments: update /etc/hosts file to be able to access our API (and later the Portal)
 ```
 cat <<EOF | sudo tee -a /etc/hosts
@@ -66,5 +60,24 @@ EOF
 ## non-active applications
 In `non-active` directory you will find a couple example argocd applcations that you can manually invoke. Once comfortable with the outcome, if you have access to the github repo you can push a an addition of any service in `non-active` to `active` to have argoCD automatically sync in its next loop.
 
-### Examples to follow
+### Set up OIDC integration with keycloak
+First deploy keycloak
+```
+kubectl create -f app-of-apps/gloo-portal/edge/non-active/keycloak-12-0-4.yaml
+```
 
+Wait for keycloak rollout to complete
+```
+kubectl rollout status deploy/keycloak
+```
+
+Run the keycloak setup script
+```
+./keycloak-setup.sh
+```
+
+# login to petstore portal oidc auth user
+```
+username: developer1
+password: gloo-portal1
+```
