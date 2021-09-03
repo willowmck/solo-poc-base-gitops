@@ -17,3 +17,10 @@ Deploy virtualservice exposing httpbin app using Gloo Edge
 ```
 kubectl create -f app-of-apps/gloo-edge/oss/demo1/non-active/httpbin-vs-default.yaml
 ```
+
+### curl httpbin
+Once you have deployed the virtualservice exposing the httpbin app, curl it with the command below:
+```
+GLOO_EXTERNAL_IP=$(kubectl get svc -n gloo-system | grep gateway-proxy | awk '{print $4}')
+curl -v -H "Host: httpbin.solo.io" ${GLOO_EXTERNAL_IP}/headers
+```

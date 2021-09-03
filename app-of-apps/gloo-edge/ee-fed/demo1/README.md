@@ -60,3 +60,9 @@ Deploy keycloak v12.0.4
 kubectl create -f app-of-apps/gloo-edge/ee-fed/demo1/non-active/keycloak-12-0-4.yaml
 ```
 
+### curl httpbin
+Once you have deployed the virtualservice exposing the httpbin app, curl it with the command below:
+```
+GLOO_EXTERNAL_IP=$(kubectl get svc -n gloo-system | grep gateway-proxy | awk '{print $4}')
+curl -v -H "Host: httpbin.solo.io" ${GLOO_EXTERNAL_IP}/headers
+```
