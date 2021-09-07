@@ -25,3 +25,4 @@ export CONTEXT=<new_name>
   - [deploy hipstershop istio demo app](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/hipstershop/istio)
 - [installing gloo-portal](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gloo-portal)
   - [deploying gloo-portal petstore demo](https://github.com/ably77/solo-poc-base-gitops/tree/main/apps/gloo-portal#optional-deploy-petstore-gloo-portal-demo-app)
+- [Installing argo workflows](./argo-workflows/README.md)
