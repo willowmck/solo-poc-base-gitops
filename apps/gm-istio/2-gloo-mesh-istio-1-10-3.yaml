@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/ably77/solo-testbed-apps
+    repoURL: https://github.com/willowmck/solo-testbed-apps
     targetRevision: HEAD
     path: kustomize/instances/overlays/platform/istio/gm-istio/1.10.3/
   destination:
