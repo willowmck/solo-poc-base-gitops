@@ -53,4 +53,4 @@ argo server
 This will start a server on port 2746 which you can view at https://localhost:2746.
 
 ## Next Steps - Deploy apps using argo workflows
-[Follow this Tutorial Here](./apps/README.md)
+See the [solo testbed apps](https://github.com/ably77/solo-testbed-apps) repository for samples.
